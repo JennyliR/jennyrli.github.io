@@ -5,7 +5,7 @@ function checkAccess() {
     const secretPassword = "youfindme";
   
     if (input.value === secretPassword) {
-      window.location.href = "/main/"; 
+      window.location.href = "./project/"; 
     } else {
       errorText.classList.remove("hidden");
       input.classList.add("shake");
