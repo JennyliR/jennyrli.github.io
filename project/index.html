@@ -3,7 +3,7 @@
 <html class="dark scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Jenny Li | Bioluminescent Deep Sea Portfolio</title>
+<title>Jenny Li | Portfolio</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -145,7 +145,6 @@
             visibility: visible;
             transform: translateY(0);
         }
-    
         @keyframes float-up {
             0% { transform: translateY(110vh) scale(0.8); opacity: 0; }
             20% { opacity: 0.3; }
@@ -156,9 +155,16 @@
         .floating-bubble {
             animation: float-up linear infinite;
         }
+        #scroll-hint {
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        #scroll-hint.hidden-hint {
+            opacity: 0;
+            visibility: hidden;
+        }
     </style>
 </head>
-<body class="selection:bg-coral-accent/40 scroll-smooth">
+<body class="selection:bg-coral-accent/40 scroll-smooth" data-mode="connect" id="top">
 <div class="ocean-overlay"></div>
 <div class="light-rays"></div>
 <div class="caustics"></div>
@@ -172,7 +178,7 @@
 <div class="bubble floating-bubble" style="width: 80px; height: 80px; left: 60%; animation-duration: 28s; animation-delay: 12s;"></div>
 <div class="bubble depth-blur floating-bubble" style="width: 45px; height: 45px; left: 45%; animation-duration: 24s; animation-delay: 3s;"></div>
 </div>
-<a class="fixed bottom-10 right-10 z-[60] w-16 h-16 rounded-full flex items-center justify-center vibrant-glass border-2 border-white/40 shadow-2xl group hover:scale-110 translate-y-10" href="#hero" id="back-to-top">
+<a class="fixed bottom-10 right-10 z-[60] w-16 h-16 rounded-full flex items-center justify-center vibrant-glass border-2 border-white/40 shadow-2xl group hover:scale-110 translate-y-10" href="#top" id="back-to-top">
 <span class="material-symbols-outlined text-white text-3xl group-hover:-translate-y-1 transition-transform">keyboard_double_arrow_up</span>
 <div class="absolute inset-0 rounded-full bg-white/10 blur-xl group-hover:bg-white/20 transition-all"></div>
 </a>
@@ -194,15 +200,15 @@
 </nav>
 </header>
 <main class="flex flex-col items-center w-full">
-<section class="flex flex-col items-center justify-center min-h-screen w-full px-6 text-center" id="hero">
+<!-- Hero Section: Centered contents + Hint arrow at bottom -->
+<section class="relative flex flex-col items-center justify-center h-screen min-h-[800px] w-full px-6 text-center" id="hero">
 <div class="max-w-6xl mx-auto flex flex-col items-center">
 <h1 class="hero-title text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold tracking-tighter mb-8 leading-[0.9] text-white">
                     Jenny Li
                 </h1>
-<div class="max-w-xl space-y-6 mb-12">
-<p class="text-xl md:text-2xl font-medium text-white leading-relaxed">
-                        UX Lead specializing in <span class="font-extrabold italic text-white underline decoration-white/60 underline-offset-8">immersive interfaces</span> and high-fidelity product design.
-                    </p>
+<div class="space-y-6 mb-12 max-w-7xl">
+<p class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-8">Digital Product Designer by trade, data-diver by choice.</p>
+<p class="text-lg md:text-xl font-medium text-white/90 leading-relaxed max-w-4xl mx-auto">Currently making waves at <b class="text-white">ICPSR</b>, I specialize in navigating the complex currents of <b class="text-white">B2B data and archive management</b>. I thrive in the deep end of <b class="text-white">0-to-1 product development</b>, taking raw research insights and transforming them into <b class="text-white">full-scale production launches</b>. <br/>Let’s sea what we can build together!</p>
 </div>
 <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
 <a class="liquid-glass-btn px-12 py-4 rounded-full text-lg font-black text-center min-w-[220px]" href="#projects">
@@ -212,9 +218,10 @@
                         Get in Touch
                     </a>
 </div>
-<div class="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-60">
-<a class="material-symbols-outlined animate-bounce text-3xl font-bold text-white" href="#projects">expand_more</a>
 </div>
+<!-- Scroll Hint: Fixed position relative to hero viewport bottom -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10" id="scroll-hint">
+<a class="material-symbols-outlined animate-bounce text-4xl font-bold text-white opacity-60 hover:opacity-100 transition-opacity" href="#projects">expand_more</a>
 </div>
 </section>
 <section class="w-full max-w-7xl px-6 py-32 scroll-mt-24 relative" id="projects">
@@ -243,15 +250,15 @@
 <button class="px-6 py-2.5 rounded-full ultra-thin-glass text-white font-bold text-sm hover:bg-white/20 transition-all">Accessibility</button>
 <button class="px-6 py-2.5 rounded-full ultra-thin-glass text-white font-bold text-sm hover:bg-white/20 transition-all">Mobile</button>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
 <!-- Project 1 -->
 <div class="group ultra-thin-glass p-6 md:p-8 rounded-[3rem] flex flex-col justify-between">
 <div>
 <div class="relative overflow-hidden rounded-[2.5rem] aspect-[4/3] shadow-2xl mb-8">
-<img alt="Project preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwYWOKprm_9uozYiQ4xvSXFxNXOkgkLHWaJhnEqMXnk0Tr5Zt6XQgGOgTHqRp2r1xAgExeCoQGZHy_KP6E2eevCaUPfqzhBgwgKfb5xoMCqkI2FA9WIJv-p0U9dKF8hQ8sVQ99m9zJUplGAHPnwnvplE6xQx9TPiWf70GCuolIOHq5gaCdzEqptl5875aIAd63Hrdzq2yNryQebLGGqdaQg1WTG8ITWoqFGzfOFsgxS5gQeFpcZlkFfXhIYEFIGVv_M7CRVKCVebc"/>
+<img alt="Nova Financial preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwYWOKprm_9uozYiQ4xvSXFxNXOkgkLHWaJhnEqMXnk0Tr5Zt6XQgGOgTHqRp2r1xAgExeCoQGZHy_KP6E2eevCaUPfqzhBgwgKfb5xoMCqkI2FA9WIJv-p0U9dKF8hQ8sVQ99m9zJUplGAHPnwnvplE6xQx9TPiWf70GCuolIOHq5gaCdzEqptl5875aIAd63Hrdzq2yNryQebLGGqdaQg1WTG8ITWoqFGzfOFsgxS5gQeFpcZlkFfXhIYEFIGVv_M7CRVKCVebc"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 </div>
-<h3 class="text-4xl font-black tracking-tight text-white mb-4">Nova Financial</h3>
+<h3 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Nova Financial</h3>
 <p class="text-white/80 text-lg leading-relaxed font-medium mb-8">Reimagining digital banking with a fluid, motion-first interface designed for the next generation of investors.</p>
 </div>
 <div>
@@ -259,7 +266,6 @@
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">UX Design</span>
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Accessibility</span>
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Mobile</span>
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Fintech</span>
 </div>
 <a class="liquid-glass-btn inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest w-full justify-center" href="#">
                             Explore Project <span class="material-symbols-outlined">arrow_forward</span>
@@ -270,10 +276,10 @@
 <div class="group ultra-thin-glass p-6 md:p-8 rounded-[3rem] flex flex-col justify-between">
 <div>
 <div class="relative overflow-hidden rounded-[2.5rem] aspect-[4/3] shadow-2xl mb-8">
-<img alt="Project preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnHw7L3KcUcL2ODXGEgskOiA-o1hTwTh3sQJV_cGTvzZqJ8orivQ_TH2FwAP_W_5x_C-hP1WBfHlRiapAJrbzXkg9bY2Z4HyGDSRPVX_4SmfxEca2Q4w2nEoG5QtraeXxk7Dkm4kgcGZ5Y4Q0_ylxcEQiUcby-mRu6VVsFKvaIbpVZN5d4PpooLe16RPM4_iyLjT2hu5hDjor-r_rIRjc1c5WE_Obp9UhRVW-nci1iClXzLV2FwB9Ol1-C4mJAYvLKD_pQZ7BaDR8"/>
+<img alt="PulseCare preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnHw7L3KcUcL2ODXGEgskOiA-o1hTwTh3sQJV_cGTvzZqJ8orivQ_TH2FwAP_W_5x_C-hP1WBfHlRiapAJrbzXkg9bY2Z4HyGDSRPVX_4SmfxEca2Q4w2nEoG5QtraeXxk7Dkm4kgcGZ5Y4Q0_ylxcEQiUcby-mRu6VVsFKvaIbpVZN5d4PpooLe16RPM4_iyLjT2hu5hDjor-r_rIRjc1c5WE_Obp9UhRVW-nci1iClXzLV2FwB9Ol1-C4mJAYvLKD_pQZ7BaDR8"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 </div>
-<h3 class="text-4xl font-black tracking-tight text-white mb-4">PulseCare</h3>
+<h3 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">PulseCare</h3>
 <p class="text-white/80 text-lg leading-relaxed font-medium mb-8">A holistic ecosystem for patient monitoring, bringing clarity to complex data through minimalist design.</p>
 </div>
 <div>
@@ -281,7 +287,6 @@
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">UX Research</span>
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Desktop</span>
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Health Tech</span>
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Dashboards</span>
 </div>
 <a class="liquid-glass-btn inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest w-full justify-center" href="#">
                             Explore Project <span class="material-symbols-outlined">arrow_forward</span>
@@ -292,17 +297,16 @@
 <div class="group ultra-thin-glass p-6 md:p-8 rounded-[3rem] flex flex-col justify-between">
 <div>
 <div class="relative overflow-hidden rounded-[2.5rem] aspect-[4/3] shadow-2xl mb-8">
-<img alt="Project preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB31oT6GTV-8a7fpGjJSezb2bP6udsxz158rYt5OzuN23IPCv6I2OzP1FbndYCKUHJS8HbLLIh644e1nZ7OKtOkONgxXyQYbelrBkS2PH7sJhFGnqMmZtnVU20CHgC9hyfItkYhb4LZNk4uRyVPVbPvldC-9iE1WgY7NcCSMzrwx-QG8x0F7G837Z_EdMVYCaKj5s8Wp2tKNrwZOO00Lyy7GnOGfykTWbQ61sMarpXVTJvPgNEPl_yotGaiDMSZe-O2MXIrSltSrSw"/>
+<img alt="Aether Travel preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB31oT6GTV-8a7fpGjJSezb2bP6udsxz158rYt5OzuN23IPCv6I2OzP1FbndYCKUHJS8HbLLIh644e1nZ7OKtOkONgxXyQYbelrBkS2PH7sJhFGnqMmZtnVU20CHgC9hyfItkYhb4LZNk4uRyVPVbPvldC-9iE1WgY7NcCSMzrwx-QG8x0F7G837Z_EdMVYCaKj5s8Wp2tKNrwZOO00Lyy7GnOGfykTWbQ61sMarpXVTJvPgNEPl_yotGaiDMSZe-O2MXIrSltSrSw"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 </div>
-<h3 class="text-4xl font-black tracking-tight text-white mb-4">Aether Travel</h3>
+<h3 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Aether Travel</h3>
 <p class="text-white/80 text-lg leading-relaxed font-medium mb-8">Designing an intuitive booking platform for luxury interstellar tourism and atmospheric research missions.</p>
 </div>
 <div>
 <div class="flex flex-wrap gap-2 mb-8">
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">UX Design</span>
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Desktop</span>
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">UI Animation</span>
 </div>
 <a class="liquid-glass-btn inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest w-full justify-center" href="#">
                             Explore Project <span class="material-symbols-outlined">arrow_forward</span>
@@ -313,17 +317,16 @@
 <div class="group ultra-thin-glass p-6 md:p-8 rounded-[3rem] flex flex-col justify-between">
 <div>
 <div class="relative overflow-hidden rounded-[2.5rem] aspect-[4/3] shadow-2xl mb-8">
-<img alt="Project preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwYWOKprm_9uozYiQ4xvSXFxNXOkgkLHWaJhnEqMXnk0Tr5Zt6XQgGOgTHqRp2r1xAgExeCoQGZHy_KP6E2eevCaUPfqzhBgwgKfb5xoMCqkI2FA9WIJv-p0U9dKF8hQ8sVQ99m9zJUplGAHPnwnvplE6xQx9TPiWf70GCuolIOHq5gaCdzEqptl5875aIAd63Hrdzq2yNryQebLGGqdaQg1WTG8ITWoqFGzfOFsgxS5gQeFpcZlkFfXhIYEFIGVv_M7CRVKCVebc"/>
+<img alt="EcoSphere App preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwYWOKprm_9uozYiQ4xvSXFxNXOkgkLHWaJhnEqMXnk0Tr5Zt6XQgGOgTHqRp2r1xAgExeCoQGZHy_KP6E2eevCaUPfqzhBgwgKfb5xoMCqkI2FA9WIJv-p0U9dKF8hQ8sVQ99m9zJUplGAHPnwnvplE6xQx9TPiWf70GCuolIOHq5gaCdzEqptl5875aIAd63Hrdzq2yNryQebLGGqdaQg1WTG8ITWoqFGzfOFsgxS5gQeFpcZlkFfXhIYEFIGVv_M7CRVKCVebc"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 </div>
-<h3 class="text-4xl font-black tracking-tight text-white mb-4">EcoSphere App</h3>
+<h3 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">EcoSphere App</h3>
 <p class="text-white/80 text-lg leading-relaxed font-medium mb-8">A sustainability tracking tool for communities to measure and reduce their collective carbon footprint.</p>
 </div>
 <div>
 <div class="flex flex-wrap gap-2 mb-8">
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">UX Research</span>
 <span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Mobile</span>
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Environment</span>
 </div>
 <a class="liquid-glass-btn inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest w-full justify-center" href="#">
                             Explore Project <span class="material-symbols-outlined">arrow_forward</span>
@@ -334,17 +337,17 @@
 <div class="group ultra-thin-glass p-6 md:p-8 rounded-[3rem] flex flex-col justify-between">
 <div>
 <div class="relative overflow-hidden rounded-[2.5rem] aspect-[4/3] shadow-2xl mb-8">
-<img alt="Project preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnHw7L3KcUcL2ODXGEgskOiA-o1hTwTh3sQJV_cGTvzZqJ8orivQ_TH2FwAP_W_5x_C-hP1WBfHlRiapAJrbzXkg9bY2Z4HyGDSRPVX_4SmfxEca2Q4w2nEoG5QtraeXxk7Dkm4kgcGZ5Y4Q0_ylxcEQiUcby-mRu6VVsFKvaIbpVZN5d4PpooLe16RPM4_iyLjT2hu5hDjor-r_rIRjc1c5WE_Obp9UhRVW-nci1iClXzLV2FwB9Ol1-C4mJAYvLKD_pQZ7BaDR8"/>
+<img alt="Coral Reef Archive preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnHw7L3KcUcL2ODXGEgskOiA-o1hTwTh3sQJV_cGTvzZqJ8orivQ_TH2FwAP_W_5x_C-hP1WBfHlRiapAJrbzXkg9bY2Z4HyGDSRPVX_4SmfxEca2Q4w2nEoG5QtraeXxk7Dkm4kgcGZ5Y4Q0_ylxcEQiUcby-mRu6VVsFKvaIbpVZN5d4PpooLe16RPM4_iyLjT2hu5hDjor-r_rIRjc1c5WE_Obp9UhRVW-nci1iClXzLV2FwB9Ol1-C4mJAYvLKD_pQZ7BaDR8"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 </div>
-<h3 class="text-4xl font-black tracking-tight text-white mb-4">Lumina OS</h3>
-<p class="text-white/80 text-lg leading-relaxed font-medium mb-8">An experimental operating system interface focused on accessibility and adaptive cognitive ergonomics.</p>
+<h3 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Coral Archive</h3>
+<p class="text-white/80 text-lg leading-relaxed font-medium mb-8">Building a robust data management system for marine biologists to track coral bleaching across the Pacific.</p>
 </div>
 <div>
 <div class="flex flex-wrap gap-2 mb-8">
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Accessibility</span>
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">UX Design</span>
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Desktop</span>
+<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">B2B SaaS</span>
+<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">UX Research</span>
+<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Data Vis</span>
 </div>
 <a class="liquid-glass-btn inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest w-full justify-center" href="#">
                             Explore Project <span class="material-symbols-outlined">arrow_forward</span>
@@ -355,17 +358,16 @@
 <div class="group ultra-thin-glass p-6 md:p-8 rounded-[3rem] flex flex-col justify-between">
 <div>
 <div class="relative overflow-hidden rounded-[2.5rem] aspect-[4/3] shadow-2xl mb-8">
-<img alt="Project preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwYWOKprm_9uozYiQ4xvSXFxNXOkgkLHWaJhnEqMXnk0Tr5Zt6XQgGOgTHqRp2r1xAgExeCoQGZHy_KP6E2eevCaUPfqzhBgwgKfb5xoMCqkI2FA9WIJv-p0U9dKF8hQ8sVQ99m9zJUplGAHPnwnvplE6xQx9TPiWf70GCuolIOHq5gaCdzEqptl5875aIAd63Hrdzq2yNryQebLGGqdaQg1WTG8ITWoqFGzfOFsgxS5gQeFpcZlkFfXhIYEFIGVv_M7CRVKCVebc"/>
+<img alt="Biolume OS preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB31oT6GTV-8a7fpGjJSezb2bP6udsxz158rYt5OzuN23IPCv6I2OzP1FbndYCKUHJS8HbLLIh644e1nZ7OKtOkONgxXyQYbelrBkS2PH7sJhFGnqMmZtnVU20CHgC9hyfItkYhb4LZNk4uRyVPVbPvldC-9iE1WgY7NcCSMzrwx-QG8x0F7G837Z_EdMVYCaKj5s8Wp2tKNrwZOO00Lyy7GnOGfykTWbQ61sMarpXVTJvPgNEPl_yotGaiDMSZe-O2MXIrSltSrSw"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 </div>
-<h3 class="text-4xl font-black tracking-tight text-white mb-4">Synth Audio</h3>
-<p class="text-white/80 text-lg leading-relaxed font-medium mb-8">Streamlining the creative process for professional sound engineers through a modular, high-fidelity DAW.</p>
+<h3 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Biolume OS</h3>
+<p class="text-white/80 text-lg leading-relaxed font-medium mb-8">A conceptual operating system interface inspired by deep-sea organisms and adaptive light patterns.</p>
 </div>
 <div>
 <div class="flex flex-wrap gap-2 mb-8">
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">UX Research</span>
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Desktop</span>
-<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Product Strategy</span>
+<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Interaction</span>
+<span class="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/10">Visual Design</span>
 </div>
 <a class="liquid-glass-btn inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest w-full justify-center" href="#">
                             Explore Project <span class="material-symbols-outlined">arrow_forward</span>
@@ -374,6 +376,7 @@
 </div>
 </div>
 </section>
+<!-- Let's Connect Section -->
 <section class="w-full flex flex-col items-center relative scroll-mt-24 pt-48 pb-32 overflow-hidden" id="contact" style="background: linear-gradient(to bottom, transparent, #003366 20%, #001A33 100%);">
 <div class="absolute inset-0 pointer-events-none z-0">
 <div class="biolume-particle" style="width: 4px; height: 4px; top: 15%; left: 10%; animation-delay: 0s;"></div>
@@ -390,7 +393,7 @@
 <div class="max-w-5xl w-full text-center space-y-20 relative z-10">
 <div class="space-y-6">
 <h2 class="text-6xl md:text-8xl font-black tracking-tighter text-white">Let's <span class="text-white/40">Connect</span></h2>
-<p class="text-white text-2xl font-medium px-4">Ready to dive into a new project? Let's make some waves together!</p>
+<p class="text-white text-xl md:text-2xl font-medium px-4">Ready to dive into a new project? Let's make some waves together!</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
 <a class="p-12 rounded-[3rem] flex flex-col items-center gap-6 hover:scale-105 transition-transform group ultra-thin-glass" href="mailto:hello@jennyli.com" style="background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
@@ -421,7 +424,7 @@
 <a class="font-black uppercase tracking-widest text-xs text-white/60 hover:text-white transition-colors" href="#">Behance</a>
 </div>
 <footer class="mt-40 w-full px-6 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-black uppercase tracking-[0.2em] text-white/40">
-<p>© 2024 Jenny Li Portfolio</p>
+<p>© 2026 Jenny Li Portfolio</p>
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-sm">water_lux</span>
 <span>Crafted in the Midnight Zone</span>
@@ -433,10 +436,20 @@
 <script>
         window.onscroll = function() {
             var btn = document.getElementById('back-to-top');
+            var hint = document.getElementById('scroll-hint');
+            
+            // Back to top button visibility
             if (window.scrollY > window.innerHeight * 0.5) {
                 btn.classList.add('visible');
             } else {
                 btn.classList.remove('visible');
+            }
+
+            // Scroll hint arrow visibility (disappears as user scrolls down from hero)
+            if (window.scrollY > 100) {
+                hint.classList.add('hidden-hint');
+            } else {
+                hint.classList.remove('hidden-hint');
             }
         };
     </script>
